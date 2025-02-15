@@ -1,0 +1,360 @@
+
+:root {
+    --background: #ffffff;
+    --foreground: #1a1f2c;
+    --card: #ffffff;
+    --card-foreground: #1a1f2c;
+    --primary: #9b87f5;
+    --primary-foreground: #ffffff;
+    --secondary: #f1f0fb;
+    --secondary-foreground: #1a1f2c;
+    --muted: #f1f1f1;
+    --muted-foreground: #666666;
+    --accent: #7e69ab;
+    --border: #eaeaea;
+    --radius: 0.75rem;
+}
+
+[data-theme="dark"] {
+    --background: #1a1f2c;
+    --foreground: #ffffff;
+    --card: #221f26;
+    --card-foreground: #ffffff;
+    --primary: #9b87f5;
+    --primary-foreground: #1a1f2c;
+    --secondary: #2a2438;
+    --secondary-foreground: #ffffff;
+    --muted: #2a2438;
+    --muted-foreground: #a1a1aa;
+    --accent: #7e69ab;
+    --border: #2a2438;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--background);
+    color: var(--foreground);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.theme-toggle .sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-toggle .sun {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .moon {
+    display: none;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--background);
+    color: var(--foreground);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.sidebar {
+    position: fixed;
+    left: -256px;
+    top: 0;
+    width: 256px;
+    height: 100vh;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    transition: transform 0.3s ease;
+    z-index: 50;
+    padding: 2rem 1rem;
+}
+
+.sidebar.open {
+    transform: translateX(256px);
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--foreground);
+    text-decoration: none;
+    border-radius: var(--radius);
+    transition: background-color 0.2s;
+}
+
+.sidebar a:hover {
+    background-color: var(--secondary);
+}
+
+.content {
+    padding: 5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    color: var(--muted-foreground);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+
+/* Timeline styles for História page */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.timeline-item h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* Mission styles for Missão page */
+.mission-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.mission-item {
+    background: var(--card);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.mission-item h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.mission-item ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+/* Actors styles for Atores page */
+.actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.actor-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.actor-card:hover {
+    transform: translateY(-5px);
+}
+
+.actor-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.actor-card h3 {
+    padding: 1rem;
+    margin: 0;
+    color: var(--foreground);
+}
+
+.actor-card p {
+    padding: 0 1rem 1rem;
+    color: var(--muted-foreground);
+}
+
+/* Plays styles for Peças page */
+.plays-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.play-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.play-card:hover {
+    transform: translateY(-5px);
+}
+
+.play-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.play-card h3 {
+    padding: 1rem;
+    margin: 0;
+    color: var(--foreground);
+}
+
+.play-card p {
+    padding: 0 1rem;
+    color: var(--muted-foreground);
+}
+
+.play-details {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted-foreground);
+    border-top: 1px solid var(--border);
+}
+
+/* Works styles for Trabalhos page */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.work-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+}
+
+.work-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.work-card h3 {
+    padding: 1rem;
+    margin: 0;
+    color: var(--foreground);
+}
+
+.work-card p {
+    padding: 0 1rem 1rem;
+    color: var(--muted-foreground);
+}
+
+@media (max-width: 768px) {
+    .timeline,
+    .mission-content {
+        padding: 1rem;
+    }
+
+    .actors-grid,
+    .plays-grid,
+    .works-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}
